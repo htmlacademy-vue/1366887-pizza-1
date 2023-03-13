@@ -10,7 +10,7 @@ const imagemin = require('gulp-imagemin');
 const svgmin = require('gulp-svgmin');
 const svgstore = require('gulp-svgstore');
 
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const objectFit = require('postcss-object-fit-images');
@@ -43,7 +43,7 @@ gulp.task('images', function () {
       imagemin.optipng({
         optimizationLevel: 3
       }),
-      imagemin.jpegtran({
+      imagemin.mozjpeg({
         progressive: true
       }),
       imagemin.svgo({
